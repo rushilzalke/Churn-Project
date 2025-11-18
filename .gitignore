@@ -13,13 +13,19 @@ venv/
 
 # Data (raw / large)
 data/raw/
-artifacts/
+
+# Keep artifacts folder allowed, but ignore large binary files inside it
+# (so CSVs will be tracked, joblib/pkl will remain ignored)
+# artifacts/
+
+# Models & heavy binaries (still ignored)
 models/
 *.joblib
 *.pkl
 
-# Power BI large files (optional)
-powerbi/*.pbix
+# Power BI: allow folder contents but ignore pbix files (too large)
+# powerbi/*.pbix
+*.pbix
 
 # OS files
 .DS_Store
