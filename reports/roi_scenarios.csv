@@ -1,0 +1,4 @@
+scenario,N_contact,expected_retained,annual_revenue_saved,campaign_cost,net_gain,roi_pct
+Conservative,70,10,8189.91,35000,-26810.09,-76.6
+Realistic,140,42,32759.66,56000,-23240.34,-41.5
+Aggressive,281,126,98629.96,84300,14329.96,17.0
