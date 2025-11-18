@@ -23,10 +23,6 @@ models/
 *.joblib
 *.pkl
 
-# Power BI: allow folder contents but ignore pbix files (too large)
-# powerbi/*.pbix
-*.pbix
-
 # OS files
 .DS_Store
 Thumbs.db
