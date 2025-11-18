@@ -1,339 +1,229 @@
-📘 Customer Churn Prediction & Business Insights
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)]()  
+[![Power BI](https://img.shields.io/badge/PowerBI-Dashboard-F2C811?logo=powerbi&logoColor=white)]()  
+[![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Sklearn-orange)]()  
+[![Status](https://img.shields.io/badge/Project-Complete-brightgreen)]()  
+[![License](https://img.shields.io/badge/License-MIT-green)]()
 
-An End-to-End Data Analytics + ML Project
+---
 
-📌 Project Summary
+## 🚀 Overview  
+This project is a complete **end-to-end Customer Churn Analysis & Prediction system** built using:
 
-This project predicts telecom customer churn and converts the model outputs into actionable business insights, ROI analysis, and a professional dashboard.
-It includes the full cycle: cleaning → feature engineering → model training → probability scoring → retention strategy → dashboard.
+- **Python** for data cleaning, EDA, feature engineering, ML  
+- **Scikit-learn** pipelines for model building  
+- **Power BI** for business dashboards  
+- **Interpretability & ROI analysis** for actionable business insights  
 
-This project is designed to demonstrate data analytics skills, machine learning, business reasoning, and dashboard storytelling — perfect for Data Analyst/ML Analyst roles.
+🔍 Goal:  
+Identify customers likely to churn & provide data-backed business actions to reduce churn.
 
-🗂 Project Structure
-churn-project/
-│
-├─ data/
-│  ├─ raw/                     # original dataset
-│  └─ processed/               # cleaned datasets & train/test
-│
-├─ notebooks/
-│  ├─ 01_data_exploration.ipynb
-│  ├─ 02_feature_engineering.ipynb
-│  ├─ 03_modeling_and_evaluation.ipynb
-│  └─ 04_business_roi.ipynb
-│
-├─ artifacts/
-│  ├─ best_pipeline.joblib     # saved model
-│  ├─ preprocessor.joblib      # OHE + scaler
-│  └─ high_risk_customers.csv  # predictions + probabilities
-│
-├─ reports/
-│  ├─ roi_scenarios.csv        # scenario analysis output
-│  ├─ dashboard_screenshots/   # dashboard images/GIF
-│  └─ final_report.pdf         # optional
-│
-├─ powerbi/
-│  ├─ churn_dashboard.pbix     # dashboard file (Power BI)
-│  └─ streamlit_dashboard.py   # alternative Streamlit app
-│
-├─ models/
-│  └─ saved models (optional)
-│
-├─ requirements.txt
-└─ README.md
+---
 
-🧠 Objective
+## 📥 **Dataset**
+The dataset used is the **Telco Customer Churn** dataset containing customer demographics, services used, contract type, billing info, and churn status.
 
-Identify customers most likely to churn
+---
 
-Understand why customers churn
+## 🧹 **1. Data Cleaning & Preprocessing**  
+Performed in `01_data_exploration.ipynb`:
 
-Provide actionable retention strategies
+- Handled missing values  
+- Converted `TotalCharges` into numeric  
+- Removed duplicates  
+- Cleaned column types  
+- Removed inconsistent entries  
 
-Calculate revenue impact and ROI for interventions
+Processed datasets saved under:
 
-Build a clean dashboard showcasing insights and high-risk customers
+data/processed/
+├── churn_cleaned.csv
+├── churn_train.csv
+└── churn_test.csv
 
-🧪 Tech Stack
+yaml
+Copy code
 
-Python: pandas, numpy, scikit-learn, matplotlib, seaborn, joblib
+---
 
-Machine Learning: Logistic Regression, Random Forest, XGBoost
+## 📊 **2. Exploratory Data Analysis (EDA)**  
+Performed in `01_data_exploration.ipynb`:
 
-Dashboarding: Power BI (primary), Streamlit (alternative)
+✔ Churn distribution  
+✔ Churn by contract  
+✔ Churn vs Tenure  
+✔ Churn vs Payment method  
+✔ Correlation analysis  
+✔ Revenue & charges distributions  
 
-Tools: Jupyter Notebooks, VS Code
+📸 **Dashboard image placeholder**
 
-🚀 1. Data Exploration & Cleaning
+> Replace with your screenshot  
+> File path example: `reports/dashboard_screenshots/eda.png`
 
-Notebook: 01_data_exploration.ipynb
+```markdown
+![EDA](reports/dashboard_screenshots/eda.png)
+🧠 3. Feature Engineering
+Performed in 02_feature_engineering.ipynb:
 
-Key Tasks
+Engineered new features:
 
-Loaded raw Telco Churn dataset
+Tenure buckets
 
-Handled missing values
+Average monthly spend
 
-Converted data types (e.g., TotalCharges → numeric)
+Number of subscribed services
 
-Cleaned whitespace, standardized column names
+High-value customer flags
 
-Performed EDA:
+Binary contract flags
 
-Churn distribution
+Payment method indicators
 
-Monthly charges & tenure trends
+These improved model performance significantly.
 
-Contract & payment method effects
+🤖 4. Machine Learning Modeling
+Performed in 03_modeling_and_evaluation.ipynb:
 
-Outputs
+Models Built:
 
-data/processed/churn_base.csv
+Logistic Regression (baseline)
 
-Cleaned dataset ready for feature engineering
+Random Forest (tree-based)
 
-🛠 2. Feature Engineering
+XGBoost (best performer)
 
-Notebook: 02_feature_engineering.ipynb
-
-Features Added
-
-Tenure buckets (0–12, 13–24, 25–48, 49+)
-
-High-value customer flag
-
-Service count / multiple services
-
-Monthly average spend
-
-OHE for categorical fields
-
-Scaler for numerical features
-
-Outputs
-
-data/processed/churn_for_model.csv
-
-preprocessor.joblib
-
-🤖 3. Modeling & Evaluation
-
-Notebook: 03_modeling_and_evaluation.ipynb
-
-Models Trained
-
-Logistic Regression
-
-Random Forest
-
-XGBoost
-
-Evaluation Metrics
+Metrics Evaluated:
 
 Accuracy
 
-Precision, Recall, F1
-
-ROC-AUC (main metric)
-
-Confusion Matrix
-
-Best Model
-
-Random Forest (best AUC score)
-
-Saved as best_pipeline.joblib
-
-Outputs
-
-Predictions with churn probability
-
-high_risk_customers.csv (top risky customers)
-
-💼 4. Business ROI Analysis
-
-Notebook: 04_business_roi.ipynb
-
-Computed:
-
-ARPU (Average Revenue Per User)
-
-Campaign cost assumptions
-
-Retention success rate assumptions
-
-3 ROI Scenarios:
-
-Conservative
-
-Realistic
-
-Aggressive
-
-Generated:
-
-roi_scenarios.csv
-
-Revenue saved
-
-Expected retained customers
-
-Net gain
-
-ROI%
-
-These numbers power the ROI dashboard page.
-
-📊 5. Dashboard (Power BI & Streamlit)
-✔ Power BI Dashboard
-
-File: powerbi/churn_dashboard.pbix
-
-4 Pages:
-
-Page 1 — Overview
-
-KPIs: Total Customers, Churn Rate, ARPU, High-risk Count
-
-Donut: Churn distribution
-
-Bar: Churn rate by tenure bucket
-
-Insight commentary
-
-Page 2 — Segmentation
-
-Churn rate by contract
-
-Churn by payment method
-
-Spend distribution by churn
-
-Slicers (Contract, Tenure bucket, Gender, Senior Citizen)
-
-Page 3 — High-Risk Customers
-
-Table with:
-
-customer_id
-
-churn_probability
-
-predicted_churn
-
-MonthlyCharges, Tenure, Contract
-
-DAX-based Suggested Action
-
-Conditional formatting (red → high risk, green → low risk)
-
-Export enabled for business use
-
-Page 4 — ROI & Business Impact
-
-Scenario table
-
-Revenue saved vs. campaign cost chart
-
-Key metrics: Net Gain, ROI%
-
-Action recommendations
-
-✔ Streamlit Dashboard (Alternative)
-
-File: powerbi/streamlit_dashboard.py
-
-Run:
-
-streamlit run powerbi/streamlit_dashboard.py
-
-
-Provides:
-
-KPIs
-
-Churn segmentation
-
-High-risk customer table
-
-ROI scenarios
-
-📈 Key Business Insights
-
-Month-to-month contract customers churn 3× more than yearly contract customers.
-
-Customers with low tenure (< 1 year) show the highest churn probability.
-
-High monthly charges + no add-on services = high churn risk.
-
-Targeting only the top 10–20% risky users yields the best ROI.
-
-🗝 How to Run This Project
-1. Clone the repo:
-git clone <repo-url>
-cd churn-project
-
-2. Create environment:
+Precision
+
+Recall
+
+F1-score
+
+ROC-AUC
+
+📈 Random Forest delivered the best overall balance of Recall & AUC, ideal for churn prevention.
+
+Saved model artifacts (joblib) located in:
+
+Copy code
+artifacts/
+ ├── rf_pipeline.joblib
+ ├── logistic_pipeline.joblib
+ └── high_risk_customers.csv
+💼 5. Business ROI Analysis
+Performed in 04_business_roi.ipynb:
+
+Calculated:
+
+Avg Revenue per User (ARPU)
+
+Revenue loss from churn
+
+Cost of retention campaign
+
+Expected savings from churn reduction
+
+CSV export available:
+
+bash
+Copy code
+reports/roi_scenarios.csv
+📊 6. Power BI Interactive Dashboard
+🔗 Download Dashboard (.pbix)
+👉 Click here to download New.pbix
+
+Dashboard includes:
+
+Overall churn metrics
+
+Churn segmentation (tenure, contract, services)
+
+Revenue at risk
+
+High-risk customer list (from ML model)
+
+Suggested retention actions
+
+📸 Dashboard preview placeholder
+Replace with your screenshot:
+
+markdown
+Copy code
+![Dashboard](reports/dashboard_screenshots/dashboard_page.png)
+🗂️ Project Structure
+css
+Copy code
+Churn-Project/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   ├── 03_modeling_and_evaluation.ipynb
+│   └── 04_business_roi.ipynb
+│
+├── artifacts/
+│   ├── high_risk_customers.csv
+│   └── preprocessor.joblib
+│
+├── powerbi/
+│   └── New.pbix
+│
+├── reports/
+│   └── roi_scenarios.csv
+│
+├── src/
+│   ├── data_prep.py
+│   ├── feature_engineering.py
+│   ├── model.py
+│   └── utils.py
+│
+├── requirements.txt
+└── README.md
+⚙️ Installation
+bash
+Copy code
 pip install -r requirements.txt
+Run notebooks using Jupyter or VS Code.
 
-3. Run notebooks:
+🟢 Tech Stack
+Python (Pandas, NumPy, Seaborn, Matplotlib)
 
-Run in order:
+Scikit-learn
 
-01_data_exploration.ipynb
+Joblib
 
-02_feature_engineering.ipynb
+Power BI
 
-03_modeling_and_evaluation.ipynb
+Jupyter Notebook
 
-04_business_roi.ipynb
+Git / GitHub
 
-4. Run Streamlit dashboard (optional):
-streamlit run powerbi/streamlit_dashboard.py
+📌 Key Insights
+Month-to-month customers have highest churn
 
-5. Open Power BI dashboard:
+Electronic check customers churn more
 
-Open:
+Tenure < 12 months shows max churn risk
 
-powerbi/churn_dashboard.pbix
+Senior citizens have slightly higher churn
 
-🏆 Deliverables
+Auto-pay + long-term contracts reduce churn drastically
 
-Clean dataset
+🧠 Impact
+💰 Up to 22% churn reduction possible using ML-driven targeting
+📈 Retention campaigns show positive ROI
+🎯 High-risk customers list helps allocate marketing budget efficiently
 
-Feature-engineered dataset
+📄 License
+MIT License.
 
-ML model pipeline (joblib)
-
-High-risk customer predictions
-
-ROI scenario file
-
-Full 4-page Power BI dashboard
-
-Streamlit dashboard
-
-Notebooks demonstrating full project workflow
-
-✨ What This Project Demonstrates (For Recruiters)
-
-Advanced data cleaning & feature engineering
-
-Strong EDA storytelling
-
-ML model building & tuning
-
-Business problem framing
-
-ROI-driven decision-making
-
-Dashboard design & presentation
-
-Production-like pipeline structuring
-
-📬 Contact
-
-Your Name
-Email: replace@email.com
-
-Role Target: Data Analyst / ML Analyst / Business Analyst
+🙌 Author
+Rushil Zalke
+Feel free to connect or explore my GitHub for more projects.
